@@ -1,4 +1,4 @@
-AME
+NAME
      SIPTable - frobnicate the bar library
 
 SYNOPSIS
@@ -23,23 +23,6 @@ FILES
      /etc/SIPTable/SIPTable.conf
           The system wide configuration file.
 
-ENVIRONMENT
-     FOOCONF
-          If non-null the full pathname for an  alternate  system
-          wide foo.conf.  Overridden by the -c option.
-
-DIAGNOSTICS
-     The following diagnostics may be issued on stderr:
-
-     Bad magic number.
-          The input file does not look like an archive file.
-     Old style baz segments.
-          foo  can  only  handle  new  style  baz segments. COBOL
-          object libraries are not supported in this version.
-
-BUGS
-     The command name should have been chosen more  carefully  to
-     reflect its purpose.
 
 AUTHOR
      Lina Linn <iptables at apps dot linalinn dot net>
