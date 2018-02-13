@@ -31,3 +31,8 @@ fn main() {
         }
     }
 }
+
+fn verifycommand(para: Vec<parameter>){
+    
+
+}
