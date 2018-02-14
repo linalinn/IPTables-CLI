@@ -54,11 +54,24 @@ else:
 					print("No dip and dport")
 				else:
 					print(results.dport + " is not a vaild Port")
-		elif (results.dport != "NOEN"):
+		elif (results.dport == "NONE"):
 			if (IP(results.dip)):
 				print(results)
 			else:
 				if(results.dip == "NONE"):
 					print("No dip and dport")
+				elif(Port(results.dport)):
+					print(results.dip + " is not a vaild IP")
 				else:
-					print(results.dport + " is not a vaild IP")
+					print(results.dip + ":" +results.dport + " is not vaild")
+		elif (results.dip != "NONE" and results.dport != "NONE"):
+			if(IP(results.dip)):
+				if(Port(results.dport)):
+					print(results)
+					print(IP(results.to))
+				else:
+					print(results.dport + " is not a valid Port")
+			elif(Port(results.dport)):
+				print(results.dip + " is not a Valid IP")
+			else:
+				print(results.dip + ":" + results.dport + " is not vaild")
