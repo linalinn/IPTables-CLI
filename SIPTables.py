@@ -10,9 +10,11 @@ def wizard():
 	dport = input()
 	print("IP and/or Port Package to send to")
 	to = input()
-	print("Chain (IN/OUT)")
+	prinasdt("Chain (IN/OUT)")
 	chain = input()
 	print()
+
+
 
 def IP(addr):
 	try:
@@ -33,10 +35,16 @@ def Port(port):
 
 
 parser = argparse.ArgumentParser(prog='IPTables-CLI', description='Commad Line Iterface for IPTables-daemon')
-
+parser.add_argument('-unixsocket', action='store', dest='socketfile',default="/var/run/IPTables-deamon",help='Path to IPTables-deamon Unixsocket file')
+parser.add_argument('-DNAT', action='store_true', dest='DNAT',help='Adding a DNAT rule')
+parser.add_argument('-SNAT', action='store_true', dest='SNAT',help='Adding a SNAT rule')
+parser.add_argument('-LOG', action='store_true', dest='LOG',help='Adding a LOG rule')
+parser.add_argument('-DROP', action='store_true', dest='DROP',help='Adding a DROP rule')
+parser.add_argument('-REJECT', action='store_true', dest='REJECT',help='Adding a REJECT rule')
 parser.add_argument('-dip', action='store', dest='dip',default="NONE",help='Filter package by destination IP')
 parser.add_argument('-dport', action='store', dest='dport',default="NONE",help='Filter package by destination Port')
-parser.add_argument('-to', action='store', dest='to',help='Rewrites destination IP and or Port of filtered package')
+parser.add_argument('-to', action='store', dest='to',default="NONE",help='Rewrites destination IP of filtered package')
+parser.add_argument('-to-port', action='store', dest='to',default="NONE",help='Rewrites destination Port of filtered package')
 parser.add_argument('-OUT', action='store_const', dest='chain',const="OUT",help='Filters outgoing traffic')
 parser.add_argument('-IN', action='store_const', dest='chain',const="IN",help='Filters ingoing traffic')
 parser.add_argument('--wizard', action='store_true', dest='cli',help='Setup wirad for IP rules')
@@ -45,10 +53,13 @@ results = parser.parse_args()
 if results.cli:
 	wizard()
 else:
-	if (results.dip != "NONE" or results.dport != "NOEN"):
+	if (results.dip != "NONE" or results.dport != "NONE"):
 		if(results.dip == "NONE"):
 			if (Port(results.dport)):
-				print(results)
+				if(IP(results.to)):
+					print(results)
+				elif(results.to == "NONE"):
+					print("Missing ")
 			else:
 				if(results.dport == "NONE"):
 					print("No dip and dport")

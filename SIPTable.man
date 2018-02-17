@@ -2,18 +2,20 @@ NAME
      SIPTable - frobnicate the bar library
 
 SYNOPSIS
-     SIPTable -IN/-OUT -dip IPv4/IPv6 -dport Port -to IPv4/IPv6:Port
+     SIPTable -IN/-OUT -dip IPv4/IPv6 -dport Port -to IPv4/IPv6 --to-port Port
      SIPTable --add-APP
 
 DESCRIPTION
      Simple IPTable
 
 OPTIONS
-     -dip [IP]   Destination IP of the incomming pakage
+     -dip [IP]   Filter package by destination IP
 
-     -dport [Port]  Destination Port of the incomming pakage
+     -dport [Port]  Filter package by destination Port
 
-     -to [IP:Port]   New destination of the incomming pakage
+     -to [IP]   Rewrites only destination IP of filtered package
+
+     -to-port [Port]   Rewrites only destination Port of filtered package
 
      -OUT   Filters outgoing traffic
 
